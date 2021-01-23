@@ -1,28 +1,13 @@
-def digital_root(n):
+def square_digits(num):
     a = 0
-    b = 0
-    c = 0
-    n = str(n)
-    for i in n:
+    b = ''
+    num = str(num)
+    for i in num:
         i = int(i)
-        a += i
-    if a > 9:
+        a = i ** 2
         a = str(a)
-        for j in a:
-            j = int(j)
-            b += j
-        if b > 9:
-            b = str(b)
-            for k in b:
-                k = int(k)
-                c += k
-            return c
-        else:
-            return b
-    else:
-        return a
+        b = b + a
+        a = 0
+    return int(b)
 
-Test.assert_equals(digital_root(16), 7)
-Test.assert_equals(digital_root(942), 6)
-Test.assert_equals(digital_root(132189), 6)
-Test.assert_equals(digital_root(493193), 2)
+test.assert_equals(square_digits(9119), 811181)
