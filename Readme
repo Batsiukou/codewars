@@ -1,15 +1,28 @@
-def nb_year(p0, percent, aug, p):
+def digital_root(n):
     a = 0
-    b = percent / 100
-    while p0 < p:
-        a += 1
-        p0 = p0 + (p0 * b) + aug
-        p0 = int(p0)  # первый аргумент должен превышать последний в целочисленной части
-    print(p0)
-    return a
+    b = 0
+    c = 0
+    n = str(n)
+    for i in n:
+        i = int(i)
+        a += i
+    if a > 9:
+        a = str(a)
+        for j in a:
+            j = int(j)
+            b += j
+        if b > 9:
+            b = str(b)
+            for k in b:
+                k = int(k)
+                c += k
+            return c
+        else:
+            return b
+    else:
+        return a
 
-Test.describe("nb_year")
-Test.it("Basic tests")
-Test.assert_equals(nb_year(1500, 5, 100, 5000), 15)
-Test.assert_equals(nb_year(1500000, 2.5, 10000, 2000000), 10)
-Test.assert_equals(nb_year(1500000, 0.25, 1000, 2000000), 94)
+Test.assert_equals(digital_root(16), 7)
+Test.assert_equals(digital_root(942), 6)
+Test.assert_equals(digital_root(132189), 6)
+Test.assert_equals(digital_root(493193), 2)
