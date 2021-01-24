@@ -1,8 +1,6 @@
 def add_binary(a,b):    #Implement a function that adds two numbers together and returns their sum in binary.
-    c = a + b
-    c = bin(c)
-    c = str(c)
-    return c[2:]
+    c = bin(a + b)
+    return str(c[2:])
 
 Test.assert_equals(add_binary(1,1),"10")
 Test.assert_equals(add_binary(0,1),"1")
