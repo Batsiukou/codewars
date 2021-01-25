@@ -1,9 +1,25 @@
-def add_binary(a,b):    #Implement a function that adds two numbers together and returns their sum in binary.
-    c = bin(a + b)
-    return str(c[2:])
-
-Test.assert_equals(add_binary(1,1),"10")
-Test.assert_equals(add_binary(0,1),"1")
-Test.assert_equals(add_binary(1,0),"1")
-Test.assert_equals(add_binary(2,2),"100")
-Test.assert_equals(add_binary(51,12),"111111")
+def likes(names):
+    b = - 2
+    if len(names) == 0:
+        return 'no one likes this'
+    elif len(names) == 1:
+        a = ''.join(names) + ' ' + 'likes this'
+        return a
+    elif len(names) == 2:
+        a = ''.join(names[0]) + ' and ' + ''.join(names[1]) + ' ' + 'like this'
+        return a
+    elif len(names) == 3:
+        a = ''.join(names[0]) + ', ' + ''.join(names[1]) + ' and ' + ''.join(names[2]) + ' ' + 'like this'
+        return a
+    else:
+        for i in names:
+            b += 1
+        b = str(b)
+        a = ''.join(names[0]) + ', ' + ''.join(names[1]) + ' and ' + b + ' others like this'
+        return a
+        
+Test.assert_equals(likes([]), 'no one likes this')
+Test.assert_equals(likes(['Peter']), 'Peter likes this')
+Test.assert_equals(likes(['Jacob', 'Alex']), 'Jacob and Alex like this')
+Test.assert_equals(likes(['Max', 'John', 'Mark']), 'Max, John and Mark like this')
+Test.assert_equals(likes(['Alex', 'Jacob', 'Mark', 'Max']), 'Alex, Jacob and 2 others like this')
