@@ -1,40 +1,16 @@
-def solution(s):
-    b = ''
-    c = 0
-    e = []
-    if len(s) == 0:
-        return []
-    elif len(s) % 2 == 0:
-        for i in s:
-            c += 1
-            b = b + i
-            if len(b) == 2:
-                s = s[c:]
-                b = b.split()
-                e = e + b
-                c = 0
-                b = ''
-    elif len(s) % 2 != 0:
-        s = s + '_'
-        for i in s:
-            c += 1
-            b = b + i
-            if len(b) == 2:
-                s = s[c:]
-                b = b.split()
-                e = e + b
-                c = 0
-                b = ''
-    return e
-        
-test.describe("Example Tests")
+def find_uniq(arr):
+    a = 0
+    for i in arr[:2]:
+        a += 1
+        if i != arr[a] and i != arr[a + 1]:
+            return i
+    a = 0
+    for i in arr:
+        a += 1
+        if i != arr[a]:
+            return arr[a]
 
-tests = (
-    ("asdfadsf", ['as', 'df', 'ad', 'sf']),
-    ("asdfads", ['as', 'df', 'ad', 's_']),
-    ("", []),
-    ("x", ["x_"]),
-)
-
-for inp, exp in tests:
-    test.assert_equals(solution(inp), exp)
+test.describe("Basic Tests")
+test.assert_equals(find_uniq([ 1, 1, 1, 2, 1, 1 ]), 2)
+test.assert_equals(find_uniq([ 0, 0, 0.55, 0, 0 ]), 0.55)
+test.assert_equals(find_uniq([ 3, 10, 3, 3, 3 ]), 10)
