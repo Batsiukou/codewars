@@ -1,16 +1,15 @@
-def find_uniq(arr):
+def anagrams(word, words):
     a = 0
-    for i in arr[:2]:
-        a += 1
-        if i != arr[a] and i != arr[a + 1]:
-            return i
-    a = 0
-    for i in arr:
-        a += 1
-        if i != arr[a]:
-            return arr[a]
+    for i in words:
+        for j in i:
+            if j not in word:
+                a = 0
+            else:
+                a += 1
+            if a == len(word):
+                print(i)
 
-test.describe("Basic Tests")
-test.assert_equals(find_uniq([ 1, 1, 1, 2, 1, 1 ]), 2)
-test.assert_equals(find_uniq([ 0, 0, 0.55, 0, 0 ]), 0.55)
-test.assert_equals(find_uniq([ 3, 10, 3, 3, 3 ]), 10)
+if __name__ == '__main__':
+
+Test.assert_equals(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']), aabb bbaa)
+Test.assert_equals(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']), carer racer)
